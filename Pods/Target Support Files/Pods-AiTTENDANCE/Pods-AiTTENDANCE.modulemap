@@ -1,0 +1,6 @@
+framework module Pods_AiTTENDANCE {
+  umbrella header "Pods-AiTTENDANCE-umbrella.h"
+
+  export *
+  module * { export * }
+}
