@@ -60,6 +60,28 @@ class API{
         }
     }
     
+    static func performDeleteRequest(fname:String, lname:String, studentID:String, classID:String){
+        if let url = URL(string: K.Endpoints.deleteURL){
+            var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
+            request.httpMethod = "DELETE"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let parameters: [String: String] = [
+                "first name": fname,
+                "last name": lname,
+                "id": studentID,
+                "classID": classID
+            ]
+            let data = try! JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            let json = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+            request.httpBody = json!.data(using: String.Encoding.utf8.rawValue);
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: request , completionHandler: handle(data : response: error:))
+            task.resume()
+        }
+    }
+    
     static func handle(data: Data?, response:URLResponse?, error:Error?){
         if error != nil{
             print(error!)

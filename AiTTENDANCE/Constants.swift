@@ -19,6 +19,7 @@ struct K {
     struct Endpoints{
         static let attendanceURL = "http://192.168.1.104:5001/recognize"
         static let enrollURL = "http://192.168.1.104:5001/enroll"
+        static let deleteURL = "http://192.168.1.104:5001/delete"
     }
     
     struct BrandColors {

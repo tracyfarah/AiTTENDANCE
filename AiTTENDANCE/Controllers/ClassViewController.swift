@@ -111,9 +111,13 @@ class ClassViewController: UIViewController{
     }
     
     func confirmDelete(indexPath: IndexPath) {
-        let studentToDelete = [K.FStore.studentFName: self.students[indexPath.row].firstName,
-            K.FStore.studentLName: self.students[indexPath.row].lastName,
-        K.FStore.studentID: self.students[indexPath.row].id]
+        
+        let firstname = self.students[indexPath.row].firstName
+        let lastname = self.students[indexPath.row].lastName
+        let studentID = self.students[indexPath.row].id
+        let studentToDelete = [K.FStore.studentFName: firstname,
+                               K.FStore.studentLName: lastname,
+                               K.FStore.studentID: studentID]
         
         let alert = UIAlertController(title: "Delete Student", message: "Are you sure you want to permanently delete student \(self.students[indexPath.row].firstName)?", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -131,6 +135,8 @@ class ClassViewController: UIViewController{
             self.students.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .none)
             self.tableView.reloadData()
+            
+            API.performDeleteRequest(fname: firstname, lname: lastname, studentID: studentID, classID: self.className!)
         }
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
