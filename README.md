@@ -33,7 +33,7 @@ python app.py
 
 You should then receive an email with the Excel attendance sheet on the same email you are logged in with.<br /><br />
 
-Contact
-Author: Tracy Farah - tracy.farah@gmail.com <br /><br />
-LinkedIn: https://linkedin.com/in/tracyfarah
+## Contact
+Author: Tracy Farah - tracy.farah@gmail.com <br />
+LinkedIn: https://linkedin.com/in/tracyfarah<br />
 Project link: https://github.com/tracyfarah/AiTTENDANCE/
